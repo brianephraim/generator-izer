@@ -90,10 +90,17 @@ IzerGenerator.prototype.app = function app() {
   var moment = require('moment')
 
   for(var i=0,l=filesArray.length;i<l;i++){
-    console.log('stuff/'+filesArray[i],filesArray[i])
     var source = 'stuff/'+filesArray[i];
     var dest = (filesArray[i]).replace('widgetNameAllLower',this.widgetNameAllLower).replace('widgetYYYY-MM-DD',moment(new Date()).format("YYYY-MM-DD"));
-    this.template(source,dest);
+    dest = dest === '_bower.json' ? 'bower.json' : dest;
+    dest = dest === '_package.json' ? 'package.json' : dest;
+    if(dest.indexOf('-notemplate') !== -1){
+      dest = dest.replace('-notemplate','');
+      console.log('------ '+dest)
+      this.copy(source,dest);
+    } else {
+      this.template(source,dest);
+    }
   }
   
 };
