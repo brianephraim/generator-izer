@@ -6,11 +6,6 @@
 	  };
 	}
 
-	if (typeof <%= widgetNameAllCap %> === 'undefined') {
-	  var global = (function(){return this;})();
-	}
-
-
 	var make<%= widgetNameFirstCap %>Object = function($){
 		console.log('make<%= widgetNameFirstCap %>Object')
 		var <%= widgetNameAllLower %> = function(options){

@@ -37,7 +37,8 @@ IzerGenerator.prototype.askFor = function askFor() {
     this.widgetNameAllLower = this.widgetName.toLowerCase();
     this.widgetNameAllCap = this.widgetNameAllLower.toUpperCase();
     this.widgetNameFirstCap = this.widgetNameAllLower.charAt(0).toUpperCase() + this.widgetNameAllLower.slice(1);
-
+    this.brkt1 = '<%=';
+    this.brkt2 = '%>';
 
     cb();
   }.bind(this));
