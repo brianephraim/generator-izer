@@ -14,7 +14,7 @@
 			html = html.replace('$@$rootPathReplaceString$@$','http://localhost:8000/barndoorbuttonizer/')
 		} else if (document.location.host === 'defualt.github.io'){
 			html = html.replace('$@$rootPathReplaceString$@$','/barndoorbuttonizer/')
-		} else if (document.location.orgin === 'file://'){
+		} else if (document.location.origin === 'file://'){
 			html = html.replace('$@$rootPathReplaceString$@$','')
 
 		}

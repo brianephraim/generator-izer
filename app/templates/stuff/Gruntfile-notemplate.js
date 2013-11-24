@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     asdf: {
       all: ['lib/*']
     },
-    qwer: {
+    blog: {
       all: ['*']
     },
     htmlConvert: {
