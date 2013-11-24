@@ -95,6 +95,7 @@ IzerGenerator.prototype.app = function app() {
     var dest = (filesArray[i]).replace('widgetNameAllLower',this.widgetNameAllLower).replace('widgetYYYY-MM-DD',moment(new Date()).format("YYYY-MM-DD"));
     dest = dest === '_bower.json' ? 'bower.json' : dest;
     dest = dest === '_package.json' ? 'package.json' : dest;
+    dest = dest === '_gitignore' ? '.gitignore' : dest;
     if(dest.indexOf('-notemplate') !== -1){
       dest = dest.replace('-notemplate','');
       console.log('------ '+dest)

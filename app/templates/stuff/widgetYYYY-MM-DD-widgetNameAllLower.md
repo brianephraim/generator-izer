@@ -7,11 +7,11 @@ tags: [dev]
 git_widget_repo_name: "<%= widgetNameAllLower %>"
 ---
 
-{% include JB/setup %}
+{x% include JB/setup %x}
 
 description
 
-{% include BE/github_widget %}
+{x% include BE/github_widget %x}
 
 <link rel="stylesheet" href="{{ site.JB.WIDGET_PATH }}/<%= widgetNameAllLower %>/css/<%= widgetNameAllLower %>.css" media="screen" type="text/css" />
 <link rel="stylesheet" href="{{ site.JB.WIDGET_PATH }}/<%= widgetNameAllLower %>/css/app.css" media="screen" type="text/css" />
@@ -21,7 +21,7 @@ description
 <script> 
 	inlineScript.<%= widgetNameAllLower %> = require.config({
 		paths: {
-	 		'jQuery': '{{ site.JB.WIDGET_PATH }}/<%= widgetNameAllLower %>/jquery.min'
+	 		'jQuery': '{{ site.JB.WIDGET_PATH }}/<%= widgetNameAllLower %>/bower_components/jquery/jquery.min'
 	 	},
 	 	shim: {
 	        'jQuery': {

@@ -1,14 +1,13 @@
 'use strict';
 
 module.exports = function(grunt) {
-
   // Project configuration.
   grunt.initConfig({
     asdf: {
       all: ['lib/*']
     },
     qwer: {
-      all: ['lib/*']
+      all: ['*']
     },
     htmlConvert: {
       options: {
@@ -89,8 +88,34 @@ module.exports = function(grunt) {
   });
 
   
-  grunt.registerMultiTask('qwer', 'Validate files with JSHint.', function() {
-    console.log('zxcvzxcv')
+  grunt.registerMultiTask('blog', 'Validate files with JSHint.', function() {
+    // PLACE THE YYYY-MM-DD-PROJECTNAME.md file into ../defualt.github.com/_posts/
+    // If the blog post already exists, use the pre-existing name and overwrite contents
+    // because there could be a case of the date changing.
+    // This task also replaces strings in the markdown file to fix gh-pages breaking.
+    // gh-pages build was breaking because of Ruby Liquid templating in the .md file.
+    // This was conflicting with gh-pages inherent Jekyll architecture.
+    // The fix consists of scramling the Liqid tages.
+    // The scrambled .md file is committed in this project rep,
+    // and this task writes an unscrampled version into ../defualt.github.com/_posts/
+
+    var blogSuffix = '-'+grunt.config.data.pkg.name+'.md';
+    var existingPath = grunt.file.expand('../defualt.github.com/_posts/*'+blogSuffix)[0];
+    for(var i=0,l=this.filesSrc.length;i<l;i++){
+      if(this.filesSrc[i].indexOf(blogSuffix) !== -1){
+        var html = grunt.file.read(this.filesSrc[i]);
+        html = html.replace(/{x%/g,"{%").replace(/%x}/g,"%}");
+        if(typeof existingPath === 'undefined'){
+          var pathToWrite = '../defualt.github.com/_posts/'+this.filesSrc[i];
+        } else {
+          var pathToWrite = existingPath;
+        }
+        console.log(pathToWrite)
+        grunt.file.write(pathToWrite,html);
+        //grunt.file.delete(this.filesSrc[i]);
+        break;
+      }
+    }
   });
 
   grunt.registerMultiTask('asdf', 'Validate files with JSHint.', function() {
@@ -109,7 +134,6 @@ module.exports = function(grunt) {
     };
     var jsContent = grunt.template.process(jsTemplate, {data: obj}) // 'abcde'
     grunt.file.write('js/appHtml.js', jsContent )
-
     //var html = grunt.file.read(this.filesSrc[0]);
     // var $html = $(html);
     // var $div = $('<div></div>');
