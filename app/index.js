@@ -8,7 +8,7 @@ var IzerGenerator = module.exports = function IzerGenerator(args, options, confi
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
+    //this.installDependencies({ skipInstall: options['skip-install'] });
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
@@ -96,6 +96,7 @@ IzerGenerator.prototype.app = function app() {
     dest = dest === '_bower.json' ? 'bower.json' : dest;
     dest = dest === '_package.json' ? 'package.json' : dest;
     dest = dest === '_gitignore' ? '.gitignore' : dest;
+    dest = dest === '_bowerrc' ? '.bowerrc' : dest;
     if(dest.indexOf('-notemplate') !== -1){
       dest = dest.replace('-notemplate','');
       console.log('------ '+dest)

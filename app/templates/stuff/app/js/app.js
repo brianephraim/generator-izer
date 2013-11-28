@@ -22,7 +22,7 @@
 		module.exports = app($,<%= widgetNameAllLower %>);
 	} else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(['jQuery','js/appHtml','js/<%= widgetNameAllLower %>'],function(){ 
+		define(['jQuery','generated/js/appHtml','js/<%= widgetNameAllLower %>'],function(){ 
 			return app.apply(null,arguments);
 		});
 	} else if (typeof global.app === 'undefined') {

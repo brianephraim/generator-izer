@@ -123,9 +123,9 @@ module.exports = function(grunt) {
     var $ = require('jquery');
 
     
-    var html = grunt.file.read("app.html");
+    var html = grunt.file.read("app/app.html");
     html = html.replace(/(\r\n|\n|\r)/gm,"");
-    var jsTemplate = grunt.file.read("appHtml-template.js");
+    var jsTemplate = grunt.file.read("grunt-templates/appHtml-template.js");
 
     var obj = {
       foo: 'c',
@@ -133,7 +133,7 @@ module.exports = function(grunt) {
       appHtml: html
     };
     var jsContent = grunt.template.process(jsTemplate, {data: obj}) // 'abcde'
-    grunt.file.write('js/appHtml.js', jsContent )
+    grunt.file.write('app/generated/js/appHtml.js', jsContent )
     //var html = grunt.file.read(this.filesSrc[0]);
     // var $html = $(html);
     // var $div = $('<div></div>');
