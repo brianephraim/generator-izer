@@ -7,7 +7,7 @@ module.exports = function(grunt) {
       all: ['lib/*']
     },
     blog: {
-      all: ['*']
+      all: ['grunt-templates/*']
     },
     htmlConvert: {
       options: {
