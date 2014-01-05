@@ -11,9 +11,9 @@
 	var app = function($,<%= widgetNameAllLower %>){
 		var html = '<%= brkt1 %> appHtml <%= brkt2 %>';
 		if(document.location.host === 'localhost:4000'){
-			html = html.replace('$@$rootPathReplaceString$@$','http://localhost:8000/barndoorbuttonizer/')
+			html = html.replace('$@$rootPathReplaceString$@$','http://localhost:8000/<%= widgetNameAllLower %>/app/')
 		} else if (document.location.host === 'defualt.github.io'){
-			html = html.replace('$@$rootPathReplaceString$@$','/barndoorbuttonizer/')
+			html = html.replace('$@$rootPathReplaceString$@$','/<%= widgetNameAllLower %>/app/')
 		} else if (document.location.origin === 'file://'){
 			html = html.replace('$@$rootPathReplaceString$@$','')
 
